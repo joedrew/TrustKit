@@ -83,6 +83,8 @@
 
 - (TSKTrustDecision)evaluateTrust:(SecTrustRef _Nonnull)serverTrust forHostname:(NSString * _Nonnull)serverHostname
 {
+    @throw([NSException exceptionWithName:@"Unsupported public key algorithm" reason:@"Tried to generate the SPKI hash for an unsupported key algorithm" userInfo:nil]);
+
     TSKTrustDecision finalTrustDecision = TSKTrustDecisionShouldBlockConnection;
     
     if ((serverTrust == NULL) || (serverHostname == nil))
